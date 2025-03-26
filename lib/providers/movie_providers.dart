@@ -135,7 +135,7 @@ class MovieProvider with ChangeNotifier {
   Future<List<Movie>> fetchMovies() async {
     await Future.delayed(const Duration(seconds: 2));
 
-    movies = watchList.map( (temp) {
+    movies = movieList.map( (temp) {
       return Movie(
         actors: List<String>.from(temp['actors']),
         imdbRating: temp['imdb_rating'].toDouble(),
