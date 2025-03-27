@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
   
   Widget build(BuildContext context) {
-    var movieProvider = Provider.of<MovieProvider>(context, listen: false);
+    var movieProvider = Provider.of<MovieProvider>(context);
 
     return MaterialApp(
       title: 'Demo',
@@ -99,7 +99,7 @@ class HomeScreen extends StatelessWidget {
                                     onTap: () {
                                       var movie = movies[index];
 
-                                      if(!movieProvider.movieList.any( (m) => m['movie_name'] == movie.movieName)) {
+                                      if(!movieProvider.watchList.any( (m) => m['movie_name'] == movie.movieName)) {
                                         movieProvider.addToList(movie);
                                       } else {
                                         movieProvider.removeFromList(movie);
@@ -107,7 +107,7 @@ class HomeScreen extends StatelessWidget {
                                     },
                                     child: Icon(
                                       Icons.watch_later,
-                                      color: movieProvider.movieList.any( (m) => m['movie_name'] == movies[index].movieName)
+                                      color: movieProvider.watchList.any( (m) => m['movie_name'] == movies[index].movieName)
                                         ? Colors.green
                                         : Colors.grey,
                                     ),
